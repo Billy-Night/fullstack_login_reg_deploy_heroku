@@ -1,0 +1,28 @@
+
+.login-container {
+    margin-top: 10%;
+    margin-left: 20%;
+    margin-right: 20%;
+    height: 250px;
+    border-radius: 30px;
+    border: solid 4px #3c9681;
+}
+.login-container h1 {
+    text-align: center;
+}
+.login-container form {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+.login-container form label {
+    font-weight: 600;
+    margin: 3px;
+}
+.btn-form {
+    margin: 6px;
+    padding: 5px;
+} 
+

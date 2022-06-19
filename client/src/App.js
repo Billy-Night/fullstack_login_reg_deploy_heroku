@@ -1,25 +1,32 @@
 import React from "react";
-import logo from './logo.svg';
+import { Routes, Route } from "react-router-dom";
+import MyProvider from "./context/MyProvider";
+
+import NavBar from './components/NavBar/NavBar.jsx';
+import Home from './components/Home_Page/Home.jsx';
+import Login from './components/Login_Page/Login.jsx';
+
+import Registration from "./components/Registration/Registration";
+import Error from './components/Error_Page/Error.jsx';
+import Profile from "./components/Profile_Page/Profile";
+
 import './App.css';
 
 function App() {
-  const [data, setData] = React.useState(null);
-
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
-  }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          {!data ? "Loading..." : data}
-        </p>
-      </header>
-    </div>
+    <MyProvider>
+      <div className="App">
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/registration" element={<Registration />} />
+          <Route path="/error" element={<Error />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </div>
+    </MyProvider>
   );
 }
 

@@ -1,0 +1,17 @@
+.nav-bar {
+    margin-top: 0px;
+    background-color: #327da8;
+    padding: 10px;
+}
+.nav-bar ul {
+    margin: 0px;
+    list-style-type: none;
+    display: flex;
+    justify-content: space-evenly;
+}
+.nav-bar li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 700;
+}
