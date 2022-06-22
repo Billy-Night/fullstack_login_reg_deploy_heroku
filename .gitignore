@@ -3,6 +3,8 @@
 
 /build
 
+/server.conf.js
+
 .env
 
 # misc

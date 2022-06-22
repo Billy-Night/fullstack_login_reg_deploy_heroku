@@ -83,7 +83,7 @@ bcrypt
 });
 
 // Path to Login into the app
-app.post("/login", (req, res) => {
+app.post("/log", (req, res) => {
   const user = {
     email: req.body.email,
     password: req.body.password,

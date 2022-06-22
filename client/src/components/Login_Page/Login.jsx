@@ -9,7 +9,7 @@ const Login = () => {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        fetch("/login", {
+        fetch("/log", {
             method: "POST", 
             headers: new Headers({
                 "Content-Type": "application/json",
