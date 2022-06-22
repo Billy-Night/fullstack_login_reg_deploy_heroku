@@ -3,6 +3,7 @@ const express = require("express");
 
 require('dotenv').config();
 //to launch the server
+
 const connection = require("./conf");
 const app = express();
 const bcrypt = require("bcrypt");
@@ -60,7 +61,6 @@ bcrypt
         city: req.body.city,
         age: req.body.age,
   };
-  //Todo need to update the database with the new password length
   //connect to the DB with .query() method to insert this info into our users table
   // we will recieve some user info
   // we will connect to the DB and store this infor
