@@ -18,6 +18,7 @@ app.use(express.json());
 app.use(cors());
 
 
+
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
 
@@ -40,11 +41,15 @@ connection.connect((err) => {
   console.log('Great! DB connection working');
 });
 
-//which path are we talking then a call back fn, so it can control some information, req, and it also controls something from the user res.
-app.get('/', (req, res) => {
-  res.send('Hello from the backend');
+app.get("/check", (req, res) => {
+  connection.query("SELECT * FROM users", function (err, result) {
+    if (err) {
+      res.status(500).send("I wrote this.....")
+    } else {
+      res.send.json({result});
+    }
+  });
 });
-//this function will only be called when the endpoint is reached
 
 // path to register a user -> /register
 app.post("/register", (req, res) => {
