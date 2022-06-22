@@ -12,7 +12,7 @@ const Registration = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         //send information to the backend
-        fetch("http://localhost:3306/register", {
+        fetch("/register", {
             method: "POST",
             headers: new Headers({
                 "Content-Type": "application/json",

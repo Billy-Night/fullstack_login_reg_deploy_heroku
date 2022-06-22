@@ -9,7 +9,7 @@ const Login = () => {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        fetch("http://localhost:3306/login", {
+        fetch("/login", {
             method: "POST", 
             headers: new Headers({
                 "Content-Type": "application/json",
