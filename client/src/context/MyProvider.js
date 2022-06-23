@@ -30,7 +30,7 @@ const MyProvider = (props) => {
         });
     };
 
-//The most import part above is from the ES6 syntax [name]:value >>>> A name attribute has to be added to inputs and it means that it's setting a dynamic name property key, which will equal to the value of our current input state.
+//The most important part above is from the ES6 syntax [name]:value >>>> A name attribute has to be added to inputs and it means that it's setting a dynamic name property key, which will equal to the value of our current input state.
 
     const handleFormSubmit = (event) => {
         event.preventDefault();

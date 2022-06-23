@@ -12,7 +12,7 @@ const Registration = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         //send information to the backend
-        fetch("/register", {
+        fetch("http://localhost:5000/api/register", {
             method: "POST",
             headers: new Headers({
                 "Content-Type": "application/json",
@@ -31,7 +31,8 @@ const Registration = () => {
                 navigate("/login")
                 context.setUserCred(context.user)
             } else {
-                navigate("/error")
+                console.log("Error from the registration frontend");
+                navigate("/error");
             }
         });
     };

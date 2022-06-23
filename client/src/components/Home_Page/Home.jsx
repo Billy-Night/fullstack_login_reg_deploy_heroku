@@ -1,12 +1,11 @@
 import React from "react";
 
 const Home = () => {
-    // const context = useContext(MyContext);
 
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
-      fetch("/api")
+      fetch("http://localhost:5000/api")
         .then((res) => res.json())
         .then((data) => setData(data.message));
     }, []);

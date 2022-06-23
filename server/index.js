@@ -3,7 +3,6 @@ const express = require("express");
 
 require('dotenv').config();
 //to launch the server
-
 const connection = require("./conf");
 const app = express();
 const bcrypt = require("bcrypt");
@@ -12,12 +11,11 @@ const cors = require("cors");
 const { sendStatus } = require("express/lib/response");
 
 const port = process.env.PORT || 5000;
-//These are the middlewares
+
+//These are the middlewares:
 app.use(express.urlencoded({ extended: false}));
 app.use(express.json());
 app.use(cors());
-
-
 
 // Have Node serve the files for our built React app
 app.use(express.static(path.resolve(__dirname, '../client/build')));
@@ -41,18 +39,8 @@ connection.connect((err) => {
   console.log('Great! DB connection working');
 });
 
-app.get("/check", (req, res) => {
-  connection.query("SELECT * FROM users", function (err, result) {
-    if (err) {
-      res.status(500).send("I wrote this.....")
-    } else {
-      res.send.json({result});
-    }
-  });
-});
-
-// path to register a user -> /register
-app.post("/register", (req, res) => {
+// path to register a user
+app.post("/api/register", (req, res) => {
 //we will recieve the user info from the frontend/postman
 
 //Takes two parameters, 1st the password and the level of secure, the higher the level the longer it will take.
@@ -68,7 +56,7 @@ bcrypt
   };
   //connect to the DB with .query() method to insert this info into our users table
   // we will recieve some user info
-  // we will connect to the DB and store this infor
+  // we will connect to the DB and store this info
   connection.query('INSERT INTO users SET ?', newUser, (err) => {
     if(err) {
       res
@@ -84,17 +72,17 @@ bcrypt
   )
 );
   // if it worked, we will send a status code of success top the end user 
-  // to it did not wokr, we eill send a status code of failure
+  // if it did not work, we will send a status code of failure
 });
 
 // Path to Login into the app
-app.post("/log", (req, res) => {
+app.post("/api/log", (req, res) => {
   const user = {
     email: req.body.email,
     password: req.body.password,
   }
 
-  // query in the BD to check email and pass
+  // query the DB to check email and pass
   connection.query(
     "SELECT * FROM users WHERE email=?", user.email,
     (err, results) => {
@@ -137,13 +125,13 @@ const authenticateUser = (req, res, next) => {
   //check that it is a valid token
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) return res.sendStatus(403);
-    // finally if theres no errors we go to the next middleware
+    // finally if there's no errors we go to the next middleware
     req.foundUser = user;
     next();
   }); 
 };
 
-app.get('/profile', authenticateUser, (req, res) => {
+app.get('/api/profile', authenticateUser, (req, res) => {
 // here we have access to what we did on the req object in the middleware
 connection.query(
   'SELECT email, name, city, age FROM users WHERE email = ?', req.foundUser.email, (err, result) => {
