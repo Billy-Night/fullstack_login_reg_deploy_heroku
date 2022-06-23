@@ -5,7 +5,7 @@ const Home = () => {
     const [data, setData] = React.useState(null);
 
     React.useEffect(() => {
-      fetch("http://localhost:5000/api")
+      fetch("https://login-and-registration-full.herokuapp.com/api")
         .then((res) => res.json())
         .then((data) => setData(data.message));
     }, []);

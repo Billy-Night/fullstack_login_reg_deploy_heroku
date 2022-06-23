@@ -9,7 +9,7 @@ const Login = () => {
 
     const handleLogin = (event) => {
         event.preventDefault();
-        fetch("http://localhost:5000/api/log", {
+        fetch("https://login-and-registration-full.herokuapp.com/api/log", {
             method: "POST", 
             headers: new Headers({
                 "Content-Type": "application/json",

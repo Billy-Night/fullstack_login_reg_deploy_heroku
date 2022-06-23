@@ -12,7 +12,7 @@ const Registration = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         //send information to the backend
-        fetch("http://localhost:5000/api/register", {
+        fetch("https://login-and-registration-full.herokuapp.com/api/register", {
             method: "POST",
             headers: new Headers({
                 "Content-Type": "application/json",
