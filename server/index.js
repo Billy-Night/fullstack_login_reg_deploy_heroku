@@ -41,7 +41,7 @@ connection.connect((err) => {
 
 // path to register a user
 app.post("/api/register", (req, res) => {
-//we will recieve the user info from the frontend/postman
+//we will receive the user info from the frontend/postman
 
 //Takes two parameters, 1st the password and the level of secure, the higher the level the longer it will take.
 bcrypt
@@ -55,7 +55,7 @@ bcrypt
         age: req.body.age,
   };
   //connect to the DB with .query() method to insert this info into our users table
-  // we will recieve some user info
+  // we will receive some user info
   // we will connect to the DB and store this info
   connection.query('INSERT INTO users SET ?', newUser, (err) => {
     if(err) {
